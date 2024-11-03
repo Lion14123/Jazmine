@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tareas con Vue</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>Lista de Tareas</h1>
+        <ul>
+            <li v-for="(tarea, index) in tareas" :key="index">
+                <label :class="{tachado: tarea.completada}">
+                    <input type="checkbox" v-model="tarea.completada"> 
+                    {{ tarea.nombre }}
+                </label>
+            </li>
+        </ul>
+
+        <p>Tareas Completas: {{ tareasCompletadas }} de {{ totalTareas }}</p>
+
+        <div class="barra-progreso">
+            <div class="progreso" :style="{ width: porcentajeCompletado + '%'}" :class="colorBarra"></div>
+        </div>
+        <p>{{ porcentajeCompletado.toFixed(2) }}% Completado</p>
+    </div>
+
+    <script src="js/js.js"></script>
+</body>
+</html>
+
